@@ -97,7 +97,7 @@ export default function AsciiCanvas({stream,theme,opts,onFrame}:Props){
 
   const t=THEMES[theme];
   return <motion.div initial={{opacity:0}} animate={{opacity:1}} className="relative h-full rounded-xl border border-zinc-800 overflow-hidden p-3 bg-black">
-    <video ref={videoRef} className="hidden" muted playsInline/>
+    <video ref={videoRef} className="absolute w-[1px] h-[1px] opacity-0 pointer-events-none" muted playsInline autoPlay/>
     <canvas ref={cRef} className="hidden"/>
     {boot && <div className="absolute inset-0 grid place-items-center text-zinc-400 animate-pulse">BOOTING CAMERA...</div>}
     <pre ref={preRef} className="absolute inset-3 overflow-hidden leading-none font-mono" style={{color:t.fg,background:t.bg,textShadow:'none',fontSize:`${Math.max(4,opts.fontSize)}px`,lineHeight:`${Math.max(4,opts.fontSize)}px`}} id="ascii-pre"/>
