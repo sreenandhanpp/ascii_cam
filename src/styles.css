@@ -1,8 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=JetBrains+Mono:wght@400;700&family=Share+Tech+Mono&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root{color-scheme:dark}
-body{background:#010308;background-image:radial-gradient(circle at 20% 0%,rgba(0,255,157,.08),transparent 60%);}
-.ui{@apply w-full bg-black/60 border border-cyan-400/30 rounded px-2 py-1 text-xs text-cyan-100;}
-.btn{@apply w-full bg-cyan-500/10 border border-cyan-500/30 rounded px-2 py-1 text-xs hover:bg-cyan-400/20 transition;}
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #09090b;
+  font-family: 'Share Tech Mono', 'Fira Code', 'JetBrains Mono', monospace;
+  overflow-x: hidden;
+}
+
+/* Custom terminal scrollbar - Monochrome */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Glowing text cursor - Solid Monochrome (no shadow) */
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Premium monochrome terminal button */
+.term-btn {
+  @apply bg-black border border-zinc-800 text-zinc-300 px-3 py-1 rounded font-mono text-xs transition duration-200 cursor-pointer select-none outline-none;
+}
+.term-btn:hover {
+  @apply border-zinc-400 text-zinc-100 bg-zinc-900;
+}
+.term-btn:active {
+  @apply bg-zinc-800 scale-[0.98];
+}
+
+/* Monochrome Input/Dropdown styling */
+.term-ui {
+  @apply bg-black border border-zinc-800 text-zinc-300 font-mono text-xs rounded px-2 py-1 outline-none transition duration-200 focus:border-zinc-500 focus:ring-1 focus:ring-zinc-500/20;
+}
+
+/* Monochrome range input styling */
+input[type="range"].term-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  height: 4px;
+  border-radius: 2px;
+  outline: none;
+  @apply border border-zinc-800;
+}
+
+input[type="range"].term-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+input[type="range"].term-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}

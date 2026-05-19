@@ -1,8 +1,8 @@
-export type ModeKey = 'classic'|'minimal'|'dot'|'blocks'|'cube'|'matrix'|'braille'|'binary'|'hex'|'custom';
+export type ModeKey = 'classic'|'minimal'|'dot'|'blocks'|'cube'|'braille'|'hex'|'custom';
 
 export const CHARSETS: Record<ModeKey,string> = {
   classic:'@#S%?*+;:,. ', minimal:' .:-=+*#%@', dot:'• . · ° o O', blocks:'░▒▓█', cube:'▖▘▝▗▚▞▛▜▟',
-  matrix:'01アイウXYZ#$', braille:'⠁⠃⠇⠧⠷⠿', binary:'01', hex:'ABCDEF', custom:'@%#*+=-:. '
+  braille:'⠁⠃⠇⠧⠷⠿', hex:'ABCDEF', custom:'@%#*+=-:. '
 };
 
 export type RenderOpts = {
@@ -13,7 +13,7 @@ const clamp=(v:number,min=0,max=255)=>Math.max(min,Math.min(max,v));
 
 export function frameToAscii(img:ImageData, opts:RenderOpts){
   const chars=(opts.mode==='custom'?opts.customCharset:CHARSETS[opts.mode]) || '@#S%?*+;:,. ';
-  const step=Math.max(2,Math.floor(opts.density));
+  const step=1;
   let out='';
   for(let y=0;y<img.height;y+=step){
     for(let x=0;x<img.width;x+=step){
@@ -27,7 +27,7 @@ export function frameToAscii(img:ImageData, opts:RenderOpts){
       l=255*Math.pow(l/255,1/Math.max(0.1,opts.gamma));
       if(opts.invert) l=255-l;
       const idx=Math.floor((l/255)*(chars.length-1));
-      const char=opts.mode==='matrix' ? chars[Math.floor(Math.random()*chars.length)] : chars[idx];
+      const char=chars[idx];
       out+=char;
     }
     out+='\n';
