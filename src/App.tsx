@@ -303,7 +303,7 @@ export default function App() {
       <main className="grid lg:grid-cols-[1fr_360px] gap-4 flex-1 h-auto lg:h-[72vh] items-stretch">
 
         {/* LEFT COLUMN: ASCII STREAM PANEL */}
-        <section className="border border-zinc-800 rounded-lg bg-black flex flex-col items-stretch overflow-hidden relative h-[45vh] lg:h-auto">
+        <section className="border border-zinc-800 rounded-lg bg-black flex flex-col items-stretch overflow-hidden relative h-[60vh] lg:h-auto">
           <div className="border-b border-zinc-800 px-3 py-2 bg-zinc-900/20 flex justify-between items-center text-xs">
             <span className="text-zinc-100 font-bold">┌─── CAMERA FEED STREAM ─────────┐</span>
             <div className="flex gap-1.5">
